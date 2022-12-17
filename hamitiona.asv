@@ -1,0 +1,8 @@
+clear;
+alpha1=1/2;
+alpha2=1/2;
+alpha3=1/2;
+alpha4=1/2;
+Hqp=zeros(4,4);
+Sqp=zeros(4,4);
+Qqpst=zeros(4,4);

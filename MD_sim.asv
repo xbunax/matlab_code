@@ -1,0 +1,64 @@
+clear;
+delta=1.5;
+n=5;
+dn=3;
+np=n^3;
+inim=cell(5);
+T=0.25;
+h=0.01;
+num_step=15000;
+m=1;
+for k=1:n
+    pv1(:,:,k)=inim;
+end
+for i=1:n
+    for j=1:n
+        for k=1:n
+            pv1{i,j,k}=delta.*[i,j,k];
+        end
+    end
+end
+position=[];
+x=[];
+y=[];
+z=[];
+pv=zeros(3,125);
+for i=1:n
+    for j=1:n
+        for k=1:n
+            position=pv1{i,j,k,1};
+            x=[x position(1)];
+            y=[y position(2)];
+            z=[z position(3)];
+        end
+    end
+end
+pv(1,:)=x;
+pv(2,:)=y;
+pv(3,:)=z;%initial pv
+scatter3(x,y,z,'ro');
+vv=rand(3,np)-0.5.*ones(3,np);
+vv=sqrt(2*T).*vv;%inital vector
+
+
+
+
+
+
+
+
+
+
+
+function fv=calc_f(pv,np)
+fv=zeros(3,np);
+for i=1:np
+    rv=pv-repmat(pv(:,i),1,np);
+    r2v=sum(rv.^2);
+    rv=rv(:,(r2v>0));
+    r2v=r2v(r2v>0);
+    phi=48./r2v.^17 - 24./r2v.^4;
+    phi=repmat(phi,3,1);
+    f=sum(rv.*phi,2);
+    
+end

@@ -1,0 +1,8 @@
+clear;
+y=[];
+x=[];
+for a=0:0.001:0.1
+    y=[y exp(a)];
+    x=[x a];
+end
+plot(x,y)

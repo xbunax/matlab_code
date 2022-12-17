@@ -1,0 +1,24 @@
+clear;
+function [theta,r]=theta(M)
+e=0.7;
+p=1.1;
+e=0;
+n=1;
+while abs((e-n)/e)>0.001
+    n=e;
+    e=e*sin(n)+M;
+end
+theta=2*atan((1+e)/(1-e))^(1/2)*tan(e/2);
+r=p/(1+e*cos(theta))
+end
+
+n1=0;
+thetal=0;
+rl=0;
+for M=linspace(0,2*pi(),50)
+n1=n1+1;
+[theta,rl]=theta(M);
+thetal(t)=theta1;
+rl(t)=r;
+end
+plot(rl.*cos(thetal),rl.*sin(theta))
